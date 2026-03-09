@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victoria Salmeron ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #e8c4c4;
+    --blush: #f5e6e8;
+    --dusty: #d4a5a5;
+    --deep: #8b5c5c;
+    --cream: #fdf6f0;
+    --text: #4a3030;
+    --light: #f9f0f0;
+    --gold: #c9a96e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── PETALS ── */
+  .petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .petal {
+    position: absolute;
+    width: 12px; height: 16px;
+    background: radial-gradient(ellipse, #f0d0d0, #e8b8b8);
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-40px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253, 246, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rose);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-style: italic;
+    color: var(--deep); letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; font-weight: 300;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--deep); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    background: radial-gradient(ellipse at 60% 40%, #f5dede 0%, #fdf6f0 60%);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--dusty); margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 300; line-height: 1;
+    color: var(--deep);
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-title em { font-style: italic; color: var(--dusty); }
+  .hero-subtitle {
+    font-size: 0.85rem; letter-spacing: 0.2em;
+    color: var(--dusty); margin-top: 1.5rem; font-weight: 200;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+  .hero-photo-frame {
+    width: min(340px, 80vw); height: min(420px, 100vw);
+    border-radius: 60% 40% 55% 45% / 50% 50% 50% 50%;
+    overflow: hidden;
+    margin: 3rem auto 0;
+    border: 3px solid var(--rose);
+    box-shadow: 0 30px 80px rgba(139, 92, 92, 0.15);
+    animation: fadeUp 1s 0.6s ease both;
+    position: relative;
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #f5dede, #e8c4c4, #f0d5d5);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.75rem;
+  }
+  .hero-photo-placeholder span { font-size: 3rem; }
+  .hero-photo-placeholder p {
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    color: var(--deep); font-weight: 300;
+  }
+  .scroll-hint {
+    margin-top: 4rem; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dusty); animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative; z-index: 1;
+    padding: 6rem 2rem;
+  }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--deep); margin-bottom: 2rem;
+  }
+  .section-title em { font-style: italic; }
+  .section-body {
+    font-size: 1rem; line-height: 1.9; font-weight: 300;
+    color: var(--text); max-width: 640px;
+  }
+
+  /* ── ANNIVERSARY ── */
+  #anniversary { background: var(--blush); }
+  .anniv-counter {
+    display: flex; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;
+  }
+  .anniv-box {
+    background: white; border-radius: 16px;
+    padding: 2rem 2.5rem; text-align: center;
+    box-shadow: 0 8px 40px rgba(139,92,92,0.08);
+    border: 1px solid var(--rose);
+    min-width: 120px;
+  }
+  .anniv-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 600; color: var(--deep);
+    line-height: 1;
+  }
+  .anniv-unit {
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--dusty);
+    margin-top: 0.4rem;
+  }
+  .anniv-date-badge {
+    display: inline-block; margin-top: 2.5rem;
+    background: var(--deep); color: white;
+    padding: 0.75rem 2rem; border-radius: 100px;
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* ── HOW WE MET ── */
+  #met { background: var(--cream); }
+  .met-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .met-image {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%;
+    background: linear-gradient(145deg, #f0d5d5, #e8c4c4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 20px 60px rgba(139,92,92,0.12);
+    border: 2px solid var(--rose);
+  }
+  @media(max-width:640px){ .met-layout{grid-template-columns:1fr} }
+
+  /* ── FAMILY ── */
+  #family { background: var(--light); }
+  .family-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .family-card {
+    background: white; border-radius: 20px;
+    overflow: hidden; border: 1px solid var(--rose);
+    box-shadow: 0 8px 30px rgba(139,92,92,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .family-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(139,92,92,0.14); }
+  .family-card-img {
+    width: 100%; height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+  }
+  .fc-mom  { background: linear-gradient(135deg, #fde8e8, #f5d0d0); }
+  .fc-dad  { background: linear-gradient(135deg, #e8edf5, #d0d8f0); }
+  .fc-sis  { background: linear-gradient(135deg, #e8f5ec, #d0eed8); }
+  .fc-bro  { background: linear-gradient(135deg, #f5f0e8, #eeddc8); }
+  .fc-pet  { background: linear-gradient(135deg, #f5e8f5, #eed0ee); }
+  .family-card-info { padding: 1.25rem; }
+  .family-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--deep); }
+  .family-card-role { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dusty); margin: 0.2rem 0 0.6rem; }
+  .family-card-desc { font-size: 0.8rem; line-height: 1.6; font-weight: 300; color: var(--text); }
+
+  /* ── FAVORITES ── */
+  #favorites { background: var(--blush); }
+  .fav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .fav-card {
+    background: white; border-radius: 20px;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--rose);
+    box-shadow: 0 6px 25px rgba(139,92,92,0.07);
+    transition: transform 0.3s;
+  }
+  .fav-card:hover { transform: translateY(-4px); }
+  .fav-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .fav-category { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .fav-value { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--deep); }
+  .fav-note { font-size: 0.78rem; line-height: 1.6; color: var(--text); margin-top: 0.4rem; font-weight: 300; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep); color: var(--blush);
+    text-align: center; padding: 4rem 2rem;
+  }
+  .footer-heart { font-size: 2rem; display: block; margin-bottom: 1rem; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+  .footer-text { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; font-weight: 300; }
+  .footer-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; margin-top: 1rem; }
+
+  /* ── DIVIDER ── */
+  .floral-divider { text-align: center; color: var(--dusty); font-size: 1.2rem; letter-spacing: 0.6em; padding: 0.5rem 0; }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- PETALS -->
+<div class="petals" id="petals"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Victoria ♡</div>
+  <ul class="nav-links">
+    <li><a href="#anniversary">Anniversary</a></li>
+    <li><a href="#met">How We Met</a></li>
+    <li><a href="#family">Family</a></li>
+    <li><a href="#favorites">Favorites</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">My Sweetheart</p>
+  <h1 class="hero-title">Victoria<br><em>Salmeron</em></h1>
+  <p class="hero-subtitle">Beautiful · Smart · Loving</p>
+  <div class="hero-photo-frame">
+      <img src="D3E4C9B2-8D1C-4E8F-B4FC-25B87CB05760_1_105_c.jpeg" alt="Victoria" style="border-radius: 60% 40% 55% 45% / 50% 50% 50% 50%; width: min(340px, 80vw); height: min(420px, 100vw);">
+  </div>
+  </div>
+  </div>
+  <p class="scroll-hint">↓ scroll to explore ↓</p>
+</section>
+
+<!-- ANNIVERSARY -->
+<section id="anniversary">
+  <div class="section-inner reveal">
+    <p class="section-label">Together since</p>
+    <h2 class="section-title">Our <em>Anniversary</em></h2>
+    <p class="section-body">Every day with you is a gift I never take for granted. Since the moment we made it official, my world has been brighter, warmer, and so much more beautiful — all because of you, Victoria.</p>
+    <div class="anniv-counter" id="counter"></div>
+    <div class="anniv-date-badge">♡ April 14, 2025 ♡</div>
+  </div>
+</section>
+
+<!-- HOW WE MET -->
+<section id="met">
+  <div class="section-inner reveal">
+    <div class="met-layout">
+      <div>
+        <p class="section-label">Our story</p>
+        <h2 class="section-title">How We <em>Met</em></h2>
+        <p class="section-body">
+          It was freshman year of highschool when we first met. I remember becoming friends through Peter and Naomy. I always believed you were different from other people, and that's what stood out to me the most about you. You are perfect and match me and I love you for who you are.<br><br>
+          I remember being part of your quineñera and how beautiful you looked that day. I was so lucky to be there with you and become closer to your family. I remember our first date and how you arrived over 30 minutes late, I am so glad I waited and let you in my life.<br><br>
+          You kept the book. I kept your number. And somewhere between that first laugh and our first kiss, I fell completely in love with you.
+        </p>
+      </div>
+      <div class="met-image">
+        <img src ="ClassroomImg.jpg" alt="How We Met" style="border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%; width: 100%; aspect-ratio: 3/4;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section id="family">
+  <div class="section-inner reveal">
+    <p class="section-label">The people she loves</p>
+    <h2 class="section-title">Her <em>Family</em></h2>
+    <p class="section-body">Victoria's heart is as big as the family that raised her — a beautiful, warm, and lively bunch who shaped the incredible woman she is today.</p>
+    <div class="family-grid">
+      <div class="family-card">
+        <div class="family-card-img fc-mom">👩</div>
+        <div class="family-card-info">
+          <div class="family-card-name">Bernice Salmeron</div>
+          <div class="family-card-role">Mother</div>
+          <div class="family-card-desc">The woman who gave birth to Victoria.</div>
+        </div>
+      </div>
+      <div class="family-card">
+        <div class="family-card-img fc-dad">👨</div>
+        <div class="family-card-info">
+          <div class="family-card-name">Diego Salmeron</div>
+          <div class="family-card-role">Father</div>
+          <div class="family-card-desc">A man of few words but deep wisdom. He taught Victoria to be fierce, independent, and always kind — lessons she carries everywhere.</div>
+        </div>
+      </div>
+      <div class="family-card">
+        <div class="family-card-img fc-sis">👧</div>
+        <div class="family-card-info">
+          <div class="family-card-name">Sofía Salmeron</div>
+          <div class="family-card-role">Younger Sister</div>
+          <div class="family-card-desc">Victoria's shadow growing up and her best friend today. Sofía has her sister's eyes and twice the mischief.</div>
+        </div>
+      </div>
+      <div class="family-card">
+        <div class="family-card-img fc-sis">👧</div>
+        <div class="family-card-info">
+          <div class="family-card-name">Delilah Salmeron</div>
+          <div class="family-card-role">Younger Sister</div>
+          <div class="family-card-desc">The baby of the family and the apple of Victoria's eye. Delilah's laughter is contagious, and her hugs are the best in the world.</div>
+        </div>
+      </div>
+      <div class="family-card">
+        <div class="family-card-img fc-bro">
+          👦
+        </div>
+        <div class="family-card-info">
+          <div class="family-card-name">JJ Salmeron</div>
+          <div class="family-card-role">Younger Brother</div>
+          <div class="family-card-desc">The protective one — and the first person Victoria calls when something exciting happens. He's been her cheerleader since day one.</div>
+        </div>
+      </div>
+      <div class="family-card">
+        <div class="family-card-img fc-pet">🐾</div>
+        <div class="family-card-info">
+          <div class="family-card-name">Millie</div>
+          <div class="family-card-role">Family Cat · </div>
+          <div class="family-card-desc">Named for her cinnamon coat and her impossibly sweet temperament. Millie is a constant source of comfort and joy for Victoria.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAVORITES -->
+<section id="favorites">
+  <div class="section-inner reveal">
+    <p class="section-label">All things Victoria</p>
+    <h2 class="section-title">Her <em>Favorites</em></h2>
+    <p class="section-body">A little peek into the world that makes Victoria, Victoria — the things that bring her joy, comfort, and that signature spark in her eyes.</p>
+    <div class="fav-grid">
+      <div class="fav-card">
+        <div class="fav-icon">🎵</div>
+        <div class="fav-category">Favorite Artist</div>
+        <div class="fav-value">Ariana Grande</div>
+        <div class="fav-note">The one she hums without realizing and knows every word to.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🎬</div>
+        <div class="fav-category">Favorite Movie</div>
+        <div class="fav-value">Your Favorite Movie</div>
+        <div class="fav-note">She's seen it a hundred times and cries at the same part every single time.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🍽️</div>
+        <div class="fav-category">Favorite Food</div>
+        <div class="fav-value">Chicken Alfredo & Lasagna</div>
+        <div class="fav-note">Her ultimate comfort meal — especially if her dad made it.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🌸</div>
+        <div class="fav-category">Favorite Flower</div>
+        <div class="fav-value">Her Favorite Flower</div>
+        <div class="fav-note">The one that always makes her smile at the farmer's market.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🩺</div>
+        <div class="fav-category">Favorite TV Show</div>
+        <div class="fav-value">Grey's Anatomy</div>
+        <div class="fav-note">Dog-eared and annotated — she's read it more times than she'll admit.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🎨</div>
+        <div class="fav-category">Favorite Color</div>
+        <div class="fav-value">Pink</div>
+        <div class="fav-note">You'll find it everywhere in her wardrobe and room.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">☕</div>
+        <div class="fav-category">Favorite Drink</div>
+        <div class="fav-value">Her Go-To Order</div>
+        <div class="fav-note">Caramel Frappe</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">✈️</div>
+        <div class="fav-category">Dream Destination</div>
+        <div class="fav-value">Her Dream Place</div>
+        <div class="fav-note">The place she's had on her vision board for years.</div>
+      </div>
+      <div class="fav-card">
+        <div class="fav-icon">🎁</div>
+        <div class="fav-category">Favorite Candy</div>
+        <div class="fav-value">Snickers</div>
+        <div class="fav-note">Victoria loves this candy. She also really enjoys Cookies and Cream Hershey's.</div>
+    </div>
+
+  </div>
+  
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-heart">♡</span>
+  <p class="footer-text">"You are my today and all of my tomorrows."</p>
+  <p class="footer-sub">Made with love, for Victoria Salmeron · Since April 14, 2025</p>
+</footer>
+
+<script>
+  // ── FALLING PETALS ──
+  const petalContainer = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      animation-duration: ${6 + Math.random() * 8}s;
+      animation-delay: ${Math.random() * 10}s;
+      transform: scale(${0.5 + Math.random() * 0.8}) rotate(${Math.random() * 360}deg);
+      opacity: ${0.4 + Math.random() * 0.4};
+    `;
+    petalContainer.appendChild(p);
+  }
+
+  // ── ANNIVERSARY COUNTER ──
+  function updateCounter() {
+    const start = new Date('2025-04-14T00:00:00');
+    const now = new Date();
+    const diff = now - start;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const months = Math.floor(days / 30.44);
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const counter = document.getElementById('counter');
+    const items = [
+      { num: months, unit: 'Months' },
+      { num: days, unit: 'Days' },
+      { num: hours, unit: 'Hours' },
+      { num: minutes, unit: 'Minutes' },
+      { num: seconds, unit: 'Seconds' }
+    ];
+    counter.innerHTML = items.map(i => `
+      <div class="anniv-box">
+        <div class="anniv-num" ${i.unit === 'Seconds' ? 'id="sec"' : ''}>${i.num}</div>
+        <div class="anniv-unit">${i.unit}</div>
+      </div>
+    `).join('');
+  }
+  updateCounter();
+  setInterval(updateCounter, 1000);
+
+  // ── REVEAL ON SCROLL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
